@@ -27,212 +27,175 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
 
-  
                     <div class="row">
-                        <!--Total Pending Events Card -->
+                        <div class="col-xl-12 col-md-12 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="font-weight-bold text-danger text-uppercase mb-1">
+                                                Hello, <span class=""><?= $_SESSION['fullname']; ?>!</span></div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Welcome to Sulong Botolan | Sangguniang Bayan | Voting System.</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-clipboard-check text-danger fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        
                         <?php
 
-                            // require '../db/dbconn.php';
+                            require '../db/dbconn.php';
 
-                            // $sql = "SELECT * FROM events WHERE status = 'pending'";
+                            $sql = "SELECT * FROM user_tbl WHERE role = 3 AND deleted = 0";
 
-                            // $result = mysqli_query($con, $sql);
-                            // $total_pending = mysqli_num_rows($result);
+                            $result = mysqli_query($con, $sql);
+                            $total_voters = mysqli_num_rows($result);
                         ?>
-                        <!-- Earnings (Monthly) Card Example -->
+                        
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pending Polls</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "12"; ?></div>
+                                                Total Voters</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_voters; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fa-solid fa-hourglass-start text-primary fa-2x"></i>
+                                            <i class="fas fa-fw fa-users text-primary fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!--Total Ongoing Events Card -->
+                        
                         <?php
 
-                            // require '../db/dbconn.php';
+                            require '../db/dbconn.php';
 
-                            // $sql = "SELECT * FROM events WHERE status = 'started'";
+                            $sql = "SELECT * FROM user_tbl WHERE role = 3 AND used = 1 AND deleted = 0";
 
-                            // $result = mysqli_query($con, $sql);
-                            // $total_started = mysqli_num_rows($result);
+                            $result = mysqli_query($con, $sql);
+                            $total_voters_done = mysqli_num_rows($result);
                         ?>
-                        <!-- Earnings (Monthly) Card Example -->
+                        
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Ongoing Polls</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "12"; ?></div>
+                                                Voters Done Voting</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_voters_done; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fa-solid fa-hourglass-half text-success fa-2x"></i>
+                                            <i class="fas fa-fw fa-users text-success fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!--Total Completed Events Card -->
+                        
                         <?php
 
-                            // require '../db/dbconn.php';
+                            require '../db/dbconn.php';
 
-                            // $sql = "SELECT * FROM events WHERE status = 'closed'";
+                            $sql = "SELECT * FROM user_tbl WHERE role = 3 AND used = 0 AND deleted = 0";
 
-                            // $result = mysqli_query($con, $sql);
-                            // $total_closed = mysqli_num_rows($result);
+                            $result = mysqli_query($con, $sql);
+                            $total_voters_notdone = mysqli_num_rows($result);
                         ?>
-                        <!-- Earnings (Monthly) Card Example -->
+                        
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
+                            <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Completed Polls
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Voters Not Yet Vote
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo "13" ; ?></div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $total_voters_notdone; ?></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fa-solid fa-hourglass-end text-danger fa-2x"></i>
+                                            <i class="fas fa-fw fa-users text-info fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!--Total User Card -->
                         <?php
 
-                            // require '../db/dbconn.php';
+                            require '../db/dbconn.php';
 
-                            // $sql = "SELECT * FROM users WHERE deleted = 0";
+                            $sql = "SELECT 
+                                        (COUNT(CASE WHEN used = 1 THEN 1 END) / COUNT(*) * 100) AS percentage_voted
+                                    FROM 
+                                        user_tbl
+                                    WHERE 
+                                        role = 3";
 
-                            // $result = mysqli_query($con, $sql);
-                            // $total_user = mysqli_num_rows($result);
+                            $result = mysqli_query($con, $sql);
+
+                            if ($result && mysqli_num_rows($result) > 0) {
+                                $row = mysqli_fetch_assoc($result);
+                                
+                                // Check if percentage_voted is NULL
+                                if ($row['percentage_voted'] !== null) {
+                                    $total_percentage = $row['percentage_voted'];
+                                } else {
+                                    $total_percentage = 0; // Set a default value when NULL
+                                }
+                            } else {
+                                $total_percentage = 0; // Set a default value when no data is found
+                            }
+
                         ?>
-                        <!-- Pending Requests Card Example -->
+
+
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                               Total Users</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "12"; ?></div>
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Percentage
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $total_percentage; ?>%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-warning" role="progressbar"
+                                                            style="width: <?= $total_percentage; ?>%" aria-valuenow="<?= $total_percentage; ?>" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fa-solid fa-users fa-2x text-warning"></i>
+                                            <i class="fas fa-fw fa-users text-warning fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
-                    <!-- Content Row -->
 
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Completed Polls Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <!-- <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> -->
-                                        </a>
-                                        <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Completed Polls</h6>
-                                    <!-- <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div> -->
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            Completed polls of each Host this month
-                                        </span>
-                                        <!-- <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-                        </div>
-                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

@@ -77,7 +77,7 @@
                                                         $last_name = $row['last_name'];
 
                                                         $suffix_name = $row['suffix_name'];
-                                                        if ($suffix_name == 'NA') {
+                                                        if ($suffix_name == 'N/A') {
                                                             $suffix = '';
                                                         }else{
                                                             $suffix = $suffix_name;
