@@ -1,5 +1,5 @@
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion text-white toggled" id="accordionSidebar" style="background-color:#b32c1a;">
+        <ul class="navbar-nav sidebar sidebar-dark accordion text-white" id="accordionSidebar" style="background-color:#b32c1a;">
 
             <li class="text-center">   <!-- Sidebar - Brand -->
                 <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
@@ -7,7 +7,7 @@
                         <img src="../img/pcb.png" alt="" style="width: 110px; height: auto;">
                     </div>
                     <div class="">
-                        <div class="sidebar-brand-text mt-2">PCB-BOT - Voting System</div>
+                        <div class="sidebar-brand-text mt-2">Sulong Botolan | Sangguniang Bayan</div>
                     </div>
                 </a>
             </li>
@@ -23,15 +23,38 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-1">
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Manage Candidates
+            </div>
 
             <!-- Nav Item - Polls -->
             <li class="nav-item">
-                <a class="nav-link" href="polls.php">
-                    <i class="fas fa-fw fa-square-poll-vertical"></i>
-                    <span>Polls</span>
+                <a class="nav-link" href="candidates.php">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Candidates</span>
                 </a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Manage Users
+            </div>
+
+            <!-- Nav Item - Users -->
+            <li class="nav-item">
+                <a class="nav-link" href="voters.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Voters</span>
+                </a>
+            </li>
+
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

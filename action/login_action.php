@@ -18,12 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Construct the SQL query to fetch user details
     $sql = "SELECT 
-                user_id, role, password, CONCAT(first_name, ' ', last_name) AS fullname
+                user_id, CONCAT(first_name, ' ', last_name) AS fullname, barangay, username, password, role
             FROM 
                 user_tbl
             WHERE 
                 username = '$username'
-                AND deleted = 0";
+                AND deleted = 0
+                AND used = 0";
 
     // Execute the SQL statement
     $result = $con->query($sql);
@@ -37,9 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password matches, user authenticated
             // Set session variables
             $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['role'] = $row['role'];
             $_SESSION['fullname'] = $row['fullname'];
-
+            $_SESSION['barangay'] = $row['barangay'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['role'] = $row['role'];
+            
             // Return role value as part of the response
             echo json_encode(['success' => true, 'role' => $row['role']]);
         } else {

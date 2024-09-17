@@ -19,13 +19,17 @@ function displaySessionErrorMessage() {
 function redirectToDashboard() {
     if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         switch ($_SESSION['role']) {
-            case "ADMIN":
+            case "1":
+                // Redirect to superadmin dashboard
+                header("Location: ./superadmin/index.php");
+                exit;
+            case "2":
                 // Redirect to admin dashboard
                 header("Location: ./admin/index.php");
                 exit;
-            case "USER":
-                // Redirect to user dashboard
-                header("Location: ./user/index.php");
+            case "3":
+                // Redirect to voter dashboard
+                header("Location: ./voter/index.php");
                 exit;
             default:
                 // Redirect to login page if role is not recognized

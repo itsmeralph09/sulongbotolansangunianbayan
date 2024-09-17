@@ -6,23 +6,25 @@ function checkSession() {
     if (!isset($_SESSION['user_id'])) {
         redirectToLogin("You must login first!");
     }
-
     // Check the role and redirect accordingly
-    if ($_SESSION['role'] == "ADMIN") {
+    if ($_SESSION['role'] == "1") {
+        // Redirect to superadmin dashboard
+        // redirectTo("../superadmin/index.php");
+    } elseif ($_SESSION['role'] == "2") {
         // Redirect to admin dashboard
-        // redirectTo("../admin/index.php");
-    } elseif ($_SESSION['role'] == "USER") {
-        // Redirect to user dashboard
-        redirectTo("../user/index.php");
+        redirectTo("../admin/index.php"); 
+    } elseif ($_SESSION['role'] == "3") {
+        // Redirect to voter dashbard
+        redirectTo("../voter/index.php"); 
     } else {
         // Redirect to login page with an error message
         redirectToLogin("You must login first!");
-    }
+    }   
 }
 
 function redirectToLogin($errorMessage) {
     $_SESSION['error'] = $errorMessage;
-    header("Location: ../index.php");
+    header("Location: ../login.php");
     exit;
 }
 

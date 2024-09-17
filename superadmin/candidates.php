@@ -4,7 +4,7 @@
 <?php include './include/head.php'; ?>
 
 <body id="page-top">
-    <div class="d-none" id="users"></div>
+    <div class="d-none" id="candidates"></div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -24,8 +24,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users mr-2"></i>USERS</h1>
-                        <!-- <a href="users-deleted.php" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-trash fa-sm"></i> Archived Users</a> -->
+                        <h1 class="h3 mb-0 text-gray-800"><i class="fa-solid fa-users-line mr-2"></i>MANAGE CANDIDATES</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -36,28 +35,27 @@
                                 <!-- Card Header -->
                                 <div class="card-header py-3 d-flex flex-column flex-md-row">
                                     <div class="col-12 col-md-6 d-flex align-items-center justify-content-start mx-0 px-0 mb-2 mb-md-0">
-                                        <h6 class="font-weight-bold text-danger mb-0">LIST OF USERS</h6>
+                                        <h6 class="font-weight-bold text-danger mb-0">LIST OF CANDIDATES</h6>
                                     </div>
                                     <div class="col-12 col-md-6 d-flex align-items-center justify-content-end mx-0 px-0">
                                         <div class="col-12 col-md-4 float-right mx-0 px-0">
-                                            <a data-toggle="modal" data-target="#addNew" class="btn btn-success shadow-sm w-100 h-100"><i class="fa-solid fa-plus mr-1"></i>ADD USER</a>
+                                            <a data-toggle="modal" data-target="#addNew" class="btn btn-success shadow-sm w-100 h-100"><i class="fa-solid fa-plus mr-1"></i>ADD NEW</a>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered nowrap" id="myTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered nowrap table-striped table-hover" id="myTable" width="100%" cellspacing="0">
                                             <thead class="">
                                                 <tr>
                                                   
-                                                    <th scope="col">#</th>                                        
-                                                    <th scope="col">Name</th>                                               
-                                                    <th scope="col">Username</th>                                               
-                                                    <th scope="col">Email</th>                                               
-                                                    <th scope="col">Designation</th>                                             
-                                                    <th scope="col">Role</th>                                           
-                                                    <th scope="col">Action</th>                             
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Stage Name</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">Picture</th>
+                                                    <th scope="col">Action</th>
                                                    
                                                 </tr>
                                             </thead>
@@ -66,15 +64,14 @@
                                                 <?php
 
                                                     require '../db/dbconn.php';
-                                                    $display_users = "SELECT * FROM `user_tbl` WHERE deleted = 0";
-                                                    $sqlQuery = mysqli_query($con, $display_users) or die(mysqli_error($con));
+                                                    $display_candidates = "SELECT * FROM `candidate_tbl` WHERE deleted = 0";
+                                                    $sqlQuery = mysqli_query($con, $display_candidates) or die(mysqli_error($con));
 
                                                     $counter = 1;
 
                                                     while($row = mysqli_fetch_array($sqlQuery)){
-                                                        $user_id = $row['user_id'];
-                                                        $username = $row['username'];
-                                                        $email = $row['email'];
+                                                        $candidate_id = $row['candidate_id'];
+                                                        
                                                         $first_name = $row['first_name'];
                                                         $middle_name = $row['middle_name'];
                                                         $last_name = $row['last_name'];
@@ -86,9 +83,15 @@
                                                             $suffix = $suffix_name;
                                                         }
 
-                                                        $designation = $row['designation'];
-                                                        $role = $row['role'];
-                                                        $password = $row['password'];
+                                                        $stage_name = $row['stage_name'];
+                                                        $purok = $row['purok'];
+                                                        $barangay = $row['barangay'];
+                                                        $gender = $row['gender'];
+                                                        $birthdate = $row['birthdate'];
+                                                        $civil_status = $row['civil_status'];
+                                                        $occupation = $row['occupation'];
+                                                        $contact_number = $row['contact_number'];
+                                                        $picture = $row['picture'];
 
                                                         $full_name = $row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name'] . ' ' . $suffix;
 
@@ -96,25 +99,27 @@
                                                 <tr>         
                                                     <td class=""><?php echo $counter; ?></td>
                                                     <td class=""><?php echo $full_name; ?></td>
-                                                    <td class=""><?php echo $username; ?></td>
-                                                    <td class=""><?php echo $email; ?></td>
-                                                    <td class=""><?php echo $designation; ?></td>
-                                                    <td class=""><?php echo $role; ?></td>       
+                                                    <td class=""><?php echo $stage_name; ?></td>
+                                                    <td class="">PUROK <?php echo $purok; ?>, <?php echo $barangay; ?></td>
+                                                    <td class="d-flex">
+                                                        <a href="../pictures/<?= $picture ?>" data-lightbox="picture-<?= $candidate_id ?>" data-title="<?= $full_name ?>">
+                                                            <img class="mx-auto rounded" src="../pictures/<?php echo $picture; ?>" alt="Candidate Picture" style="width: 60px; height: 60px; object-fit: cover;">
+                                                        </a>
+                                                    </td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm shadow-sm btn-primary" data-toggle="modal" data-target="#edit_<?php echo $user_id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-sm btn-danger delete-user-btn"
-                                                           data-user-id="<?php echo $user_id; ?>" 
-                                                           data-user-name="<?php echo htmlspecialchars($full_name); ?>"
-                                                           data-user-username="<?php echo htmlspecialchars($username); ?>"
-                                                           data-user-email="<?php echo htmlspecialchars($email); ?>"
-                                                           data-user-designation="<?php echo htmlspecialchars($designation); ?>">
+                                                        <a class="btn btn-sm shadow-sm btn-primary" data-toggle="modal" data-target="#edit_<?php echo $candidate_id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="#" class="btn btn-sm btn-danger delete-candidate-btn"
+                                                           data-candidate-id="<?php echo $candidate_id; ?>" 
+                                                           data-candidate-name="<?php echo htmlspecialchars($full_name); ?>"
+                                                           data-candidate-stagename="<?php echo htmlspecialchars($stage_name); ?>"
+                                                           data-candidate-address="<?php echo 'PUROK ' . htmlspecialchars($purok) . ', ' . htmlspecialchars($barangay); ?>">
                                                            <i class="fa-solid fa-trash"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
                                                 <?php
                                                     $counter++;
-                                                    include('modal/user_edit_modal.php');
+                                                    //include('modal/candidate_edit_modal.php');
                                                 } 
                                                 ?>
                                             </tbody>
@@ -124,7 +129,7 @@
                                 </div>
                             </div>
                         </div>
-                        <?php include('modal/user_add_modal.php'); ?>
+                        <?php //include('modal/candidate_add_modal.php'); ?>
                     </div>
                     
                 </div>
@@ -161,26 +166,32 @@
             })
         });
     </script>
+    <script>
+        lightbox.option({
+          'resizeDuration': 400,
+          'imageFadeDuration': 400,
+          'fadeDuration': 400
+        })
+    </script>
 
     <!-- Delete User Account -->
     <script>
         $(document).ready(function() {
             // Function for deleting event
-            $('.delete-user-btn').on('click', function(e) {
+            $('.delete-candidate-btn').on('click', function(e) {
                 e.preventDefault();
                 var deleteButton = $(this);
-                var userId = deleteButton.data('user-id');
-                var userName = decodeURIComponent(deleteButton.data('user-name'));
-                var userUsername = decodeURIComponent(deleteButton.data('user-username'));
-                var userEmail = decodeURIComponent(deleteButton.data('user-email'));
-                var userDesignation = decodeURIComponent(deleteButton.data('user-designation'));
+                var candidateId = deleteButton.data('candidate-id');
+                var candidateName = decodeURIComponent(deleteButton.data('candidate-name'));
+                var candidateStagename = decodeURIComponent(deleteButton.data('candidate-stagename'));
+                var candidateAddress = decodeURIComponent(deleteButton.data('candidate-address'));
+                
                 Swal.fire({
-                    title: 'Delete User Account',
-                    html: "You are about to delete the following user:<br><br>" +
-                          "<strong>Name:</strong> " + userName + "<br>" +
-                          "<strong>Username:</strong> " + userUsername + "<br>" +
-                          "<strong>Email:</strong> " + userEmail + "<br>" +
-                          "<strong>Designation:</strong> " + userDesignation + "<br>",
+                    title: 'Delete Candidate',
+                    html: "You are about to delete the following candidate:<br><br>" +
+                          "<strong>Candidate Name:</strong> " + candidateName + "<br>" +
+                          "<strong>Stage Name:</strong> " + candidateStagename + "<br>" +
+                          "<strong>Address:</strong> " + candidateAddress + "<br>",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -189,7 +200,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: 'action/delete_user.php',
+                            url: 'action/delete_candidate.php',
                             type: 'POST',
                             data: {
                                 user_id: userId
@@ -198,7 +209,7 @@
                                 if (response.trim() === 'success') {
                                     Swal.fire(
                                         'Deleted!',
-                                        'User has been deleted.',
+                                        'Candidate has been deleted.',
                                         'success'
                                     ).then(() => {
                                         location.reload();
@@ -206,7 +217,7 @@
                                 } else {
                                     Swal.fire(
                                         'Error!',
-                                        'Failed to delete user.',
+                                        'Failed to delete candidate.',
                                         'error'
                                     );
                                 }
@@ -215,7 +226,7 @@
                                 console.error(xhr.responseText);
                                 Swal.fire(
                                     'Error!',
-                                    'Failed to delete user.',
+                                    'Failed to delete candidate.',
                                     'error'
                                 );
                             }

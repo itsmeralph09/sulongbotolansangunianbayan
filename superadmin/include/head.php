@@ -12,7 +12,7 @@ checkSession();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PCBBOT - User</title>
+    <title>Sulong Botolan | Sanggunian Bayan</title>
     <link rel="icon" type="image/x-icon" href="../img/pcb.png">
 
     <!-- Custom fonts for this template-->
@@ -65,75 +65,6 @@ checkSession();
           transition: 0.1s filter;
           filter: blur(3px);
         }
-
-        .radio-selection {
-            display: flex;
-            flex-flow: row wrap;
-        }
-        .radio-option {
-            flex: 1;
-            padding: 0.5rem;
-        }
-        .radio-option input[type="radio"] {
-            display: none;
-        }
-        .radio-option input[type="radio"]:not(:disabled) ~ .radio-label {
-            cursor: pointer;
-        }
-        .radio-option input[type="radio"]:disabled ~ .radio-label {
-            color: hsla(150, 5%, 75%, 1);
-            border-color: hsla(150, 5%, 75%, 1);
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-        .radio-label {
-            height: 100%;
-            display: block;
-            background: white;
-            border: 2px solid hsla(150, 75%, 50%, 1);
-            border-radius: 20px;
-            padding: 1rem;
-            margin-bottom: .5rem;
-            text-align: center;
-            box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
-            position: relative;
-        }
-        .radio-option input[type="radio"]:checked + .radio-label {
-            background: hsla(150, 75%, 50%, 1);
-            color: hsla(215, 0%, 100%, 1);
-            box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
-        }
-        .radio-option input[type="radio"]:checked + .radio-label::after {
-            color: hsla(215, 5%, 25%, 1);
-            font-family: FontAwesome;
-            border: 2px solid hsla(150, 75%, 45%, 1);
-            content: "\f00c";
-            font-size: 24px;
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 50px;
-            width: 50px;
-            line-height: 50px;
-            text-align: center;
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
-        }
-        .radio-option input[type="radio"]#control_05:checked + .radio-label {
-            background: red;
-            border-color: red;
-        }
-        .radio-title {
-            margin-top: 1rem;
-            font-size: .9rem;
-        }
-        .radio-description {
-            font-weight: 900;
-        }
-        @media only screen and (max-width: 700px) {
-            .radio-selection
     </style>
 
 </head>

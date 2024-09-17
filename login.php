@@ -7,7 +7,7 @@
 <html lang="en">
 
 <head>
-  <title>PCB BOT</title>
+  <title>Sulong Botolan | Sanggunian Bayan</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,7 +41,7 @@
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
           <form method="post" id="loginForm">
 
-            <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-3 mt-3" style="color: #830408;">PCB | Board of Trustees</p>
+            <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-3 mt-3" style="color: #830408;">Sulong Botolan | Sanggunian Bayan</p>
 
              <!-- Email input -->
             <div class="form-floating mb-4">
@@ -110,16 +110,20 @@
                       url: './action/login_action.php',
                       type: 'POST',
                       data: $loginForm.serialize(),
-                      dataType: 'json',
+                      dataType: 'json', // Assuming response will be JSON
                       success: function(response) {
                           if (response.success) {
                               // Redirect based on session role
-                              const role = response.role;
-                              if (role === "ADMIN") {
-                                  window.location.href = './admin/index.php'; // Redirect to admin dashboard
-                              } else if (role === "USER") {
-                                  window.location.href = './user/index.php'; // Redirect to user page
-                              }
+                              const role = parseInt(response.role);
+                              if (role === 1) {
+                                    window.location.href = './superadmin/index.php'; // Redirect to supervisor dashboard
+                                } else if (role === 2) {
+                                    window.location.href = './admin/index.php'; // Redirect to staff dashboard
+                                }else if (role === 3) {
+                                    window.location.href = './voter/index.php'; // Redirect to voter dashboard
+                                } else {
+                                    showWarningMessage('Invalid user role.'); // Show error for unknown role
+                                }
                           } else {
                               // If AJAX request is successful but response indicates error, show SweetAlert error message
                               showWarningMessage2(response.message || 'Invalid username or password. Please try again.');
