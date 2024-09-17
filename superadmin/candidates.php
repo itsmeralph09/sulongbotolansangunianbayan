@@ -203,7 +203,7 @@
                             url: 'action/delete_candidate.php',
                             type: 'POST',
                             data: {
-                                user_id: userId
+                                candidate_id: candidateId
                             },
                             success: function(response) {
                                 if (response.trim() === 'success') {
