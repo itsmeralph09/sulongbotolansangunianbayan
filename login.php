@@ -7,7 +7,7 @@
 <html lang="en">
 
 <head>
-  <title>Sulong Botolan | Sanggunian Bayan</title>
+  <title>SZP - Sulong Botolan</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/login.css">
-  <link rel="icon" href="img/botlogo.png" type="png">
+  <link rel="icon" href="img/SZP.png" type="png">
 
   <!-- SWEETALERT2 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
@@ -36,12 +36,12 @@
     <div class="container py-5 h-100">
       <div class="row d-flex align-items-center justify-content-center h-100">
         <div class="col-md-8 col-lg-7 col-xl-6">
-          <img src="img/botlogo.png" class="img-fluid" alt="BOT logo image" height="auto" width="auto">
+          <img src="img/SZP.png" class="img-fluid" alt="BOT logo image" height="auto" width="auto">
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
           <form method="post" id="loginForm">
 
-            <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-3 mt-3" style="color: #830408;">Sulong Botolan | Sanggunian Bayan</p>
+            <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-3 mt-3" style="color: #830408;">Sulong Zambales Party - Sulong Botolan</p>
 
              <!-- Email input -->
             <div class="form-floating mb-4">

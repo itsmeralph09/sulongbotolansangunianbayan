@@ -35,7 +35,7 @@
                                         <div class="col mr-2">
                                             <div class="font-weight-bold text-danger text-uppercase mb-1">
                                                 Hello, <span class=""><?= $_SESSION['fullname']; ?>!</span></div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Welcome to Sulong Botolan | Sangguniang Bayan | Voting System.</div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Welcome to Sulong Zambales - Sulong Botolan | Voting System.</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa-solid fa-clipboard-check text-danger fa-2x"></i>

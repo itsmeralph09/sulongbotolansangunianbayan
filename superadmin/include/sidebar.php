@@ -4,10 +4,10 @@
             <li class="text-center">   <!-- Sidebar - Brand -->
                 <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
                     <div class="sidebar-brand-icon">
-                        <img src="../img/pcb.png" alt="" style="width: 110px; height: auto;">
+                        <img src="../img/SZP1.png" class="rounded-circle" alt="" style="width: 90px; height: auto;">
                     </div>
                     <div class="">
-                        <div class="sidebar-brand-text mt-2">Sulong Botolan | Sangguniang Bayan</div>
+                        <div class="sidebar-brand-text mt-2">Sulong Zambales - Sulong Botolan</div>
                     </div>
                 </a>
             </li>

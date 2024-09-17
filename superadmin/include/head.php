@@ -12,8 +12,8 @@ checkSession();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sulong Botolan | Sanggunian Bayan</title>
-    <link rel="icon" type="image/x-icon" href="../img/pcb.png">
+    <title>SZP - Sulong Botolan</title>
+    <link rel="icon" type="image/x-icon" href="../img/SZP.png">
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

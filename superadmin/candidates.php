@@ -110,7 +110,7 @@
                                                     <td class="">PUROK <?php echo $purok; ?>, <?php echo $barangay; ?></td>
                                                     
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm shadow-sm btn-primary" data-toggle="modal" data-target="#edit_<?php echo $candidate_id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a class="btn btn-sm shadow-sm btn-primary" data-toggle="modal" data-target="#edit_<?= $candidate_id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="#" class="btn btn-sm btn-danger delete-candidate-btn"
                                                            data-candidate-id="<?php echo $candidate_id; ?>" 
                                                            data-candidate-name="<?php echo htmlspecialchars($full_name); ?>"
@@ -122,7 +122,7 @@
                                                 </tr>
                                                 <?php
                                                     $counter++;
-                                                    //include('modal/candidate_edit_modal.php');
+                                                    include('modal/candidate_edit_modal.php');
                                                 } 
                                                 ?>
                                             </tbody>
