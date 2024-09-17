@@ -51,10 +51,11 @@
                                                 <tr>
                                                   
                                                     <th scope="col">#</th>
+                                                    <th scope="col">Picture</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Stage Name</th>
                                                     <th scope="col">Address</th>
-                                                    <th scope="col">Picture</th>
+                                                    
                                                     <th scope="col">Action</th>
                                                    
                                                 </tr>
@@ -96,16 +97,18 @@
                                                         $full_name = $row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name'] . ' ' . $suffix;
 
                                                 ?>
-                                                <tr>         
+                                                <tr>
+                                                        
                                                     <td class=""><?php echo $counter; ?></td>
-                                                    <td class=""><?php echo $full_name; ?></td>
-                                                    <td class=""><?php echo $stage_name; ?></td>
-                                                    <td class="">PUROK <?php echo $purok; ?>, <?php echo $barangay; ?></td>
                                                     <td class="d-flex">
                                                         <a href="../pictures/<?= $picture ?>" data-lightbox="picture-<?= $candidate_id ?>" data-title="<?= $full_name ?>">
                                                             <img class="mx-auto rounded" src="../pictures/<?php echo $picture; ?>" alt="Candidate Picture" style="width: 60px; height: 60px; object-fit: cover;">
                                                         </a>
-                                                    </td>
+                                                    </td>  
+                                                    <td class=""><?php echo $full_name; ?></td>
+                                                    <td class=""><?php echo $stage_name; ?></td>
+                                                    <td class="">PUROK <?php echo $purok; ?>, <?php echo $barangay; ?></td>
+                                                    
                                                     <td class="text-center">
                                                         <a class="btn btn-sm shadow-sm btn-primary" data-toggle="modal" data-target="#edit_<?php echo $candidate_id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="#" class="btn btn-sm btn-danger delete-candidate-btn"
