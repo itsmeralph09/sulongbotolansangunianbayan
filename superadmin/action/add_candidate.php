@@ -25,8 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Remove spaces from the last name
     $last_name_no_spaces = str_replace(' ', '', $last_name);
 
+    // Get current datetime to make the file name unique
+    $timestamp = date('YmdHis');
+
     // Handle file name
-    $file_name = $last_name_no_spaces . '.' . $file_extension;
+    $file_name = $last_name_no_spaces . '_' . $timestamp . '.' . $file_extension;
 
     $file_tmp = $file['tmp_name'];
 
