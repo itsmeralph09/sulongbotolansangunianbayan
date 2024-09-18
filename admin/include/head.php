@@ -73,22 +73,56 @@ checkSession();
             margin-top: 20px;
         }
         .result-card {
-            margin-bottom: 20px;
-            border: 2px solid transparent;
-            text-align: center;
-        }
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: auto; /* Allow cards to adjust height based on content */
+    background-color: #fff; /* Ensure background is white for printing */
+    position: relative; /* Needed for absolute positioning of the image */
+    min-height: 250px;
+    max-height: 250px;
+}
+
+
         .result-card img {
             width: 100px;
             height: 100px;
-            object-fit: cover;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+
+        }
+
+        /* Green star icon for top two vote holders */
+        .highlight::before {
+            content: '★'; /* Unicode star character */
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: green;
+            font-size: 24px;
+
         }
         .highlight {
-            border-color: blue; /* Blue border for top cards */
-            background-color: #d4edda; /* Light green background */
+    background-color: #7fffce; /* Light green background */
+    border: 2px solid green; /* Green border */
+    color: black; /* Ensure text is readable on light green background */
+}
+
+/* Light red border for non-top cards */
+.non-top {
+    border-color: lightcoral;
+}
+         .result-card h5{
+            color: #000; /* Black text color for better readability */
+            margin-top: 90px; /* Space for image and star */
         }
         .non-top {
             border-color: lightcoral; /* Light red border for non-top cards */
         }
+
         .check-icon {
             color: white;
             font-size: 24px;
@@ -117,17 +151,77 @@ checkSession();
         .print-button-container {
             text-align: right;
         }
-        @media print {
-            .print-button {
-                display: none;
-            }
-            .container {
-                margin-top: 0;
-            }
-            .chart-container canvas {
-                max-height: none;
-            }
+@media print {
+    .print-button {
+        display: none;
+    }
+    .container-fluid {
+        margin-top: 0;
+    }
+
+    /* Grid layout for cards: 2 rows, 4 columns */
+    .result-container {
+        display: run-in;
+        grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+        grid-auto-rows: auto; /* Auto-adjust row height */
+        gap: 20px; /* Spacing between cards */
+        margin-bottom: 30px; /* Space between cards and chart */
+    }
+
+    /* Card styling */
+    .result-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        background-color: #fff;
+        text-align: center;
+        padding: 10px;
+        height: auto; /* Auto height */
+        page-break-inside: avoid; /* Prevent breaking across pages */
+    }
+    .card-title{
+        font-weight: bold;
+    }
+    .card-text{
+        font-size: 30px;
+        top:5px;
+    }
+  .result-card img {
+            width: 247px;
+            height: 247px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
         }
+    /* Chart spans entire row */
+    .chart-container {
+        grid-column: span 4; /* Chart takes full width after cards */
+        margin-top: 30px;
+    }
+
+    /* Hide sidebar if exists */
+    #wrapper .sidebar,
+    #wrapper #sidebar {
+        display: none !important;
+    }
+
+    #content-wrapper {
+        margin-left: 0 !important;
+    }
+       .highlight {
+    background-color: #7fffce; /* Light green background */
+    border: 2px solid green; /* Green border */
+    color: black; /* Ensure text is readable on light green background */
+}
+
+/* Light red border for non-top cards */
+.non-top {
+    border-color: lightcoral;
+}
+}
+
+
+
+
     </style>
 
 </head>

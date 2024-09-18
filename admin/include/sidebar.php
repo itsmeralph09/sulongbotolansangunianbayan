@@ -27,7 +27,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Manage Candidates
+                Candidates
             </div>
 
             <!-- Nav Item - Polls -->
@@ -42,19 +42,19 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+         <!--    <div class="sidebar-heading">
                 Manage Voters
-            </div>
+            </div> -->
 
             <!-- Nav Item - Users -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="voters.php">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Voters</span>
                 </a>
-            </li>
+            </li> -->
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <!-- <hr class="sidebar-divider"> -->
 
             <!-- Heading -->
             <div class="sidebar-heading">
