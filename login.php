@@ -55,6 +55,14 @@
               <label for="floatingPassword">Password</label>
             </div>
 
+            <!-- Show Password Checkbox -->
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="showPasswordCheckbox">
+              <label class="form-check-label" for="showPasswordCheckbox">
+                Show Password
+              </label>
+            </div>
+
              <!-- Submit button -->
             <div class="d-flex justify-content-center mx-1 mb-3 mb-lg-1">
               <input type="submit" value="Login" name="login" id="login-btn" class="btn btn-danger btn-lg text-light my-2 py-3" style="width:100% ; border-radius: 30px; font-weight:600;" />
@@ -85,6 +93,12 @@
               text: message
           });
       };
+
+      $('#showPasswordCheckbox').on('change', function() {
+        const passwordField = $('#floatingPassword');
+        const fieldType = $(this).is(':checked') ? 'text' : 'password';
+        passwordField.attr('type', fieldType);
+      });
 
       $(document).ready(function() {
           $('#login-btn').on('click', function(event) {
