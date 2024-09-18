@@ -209,6 +209,11 @@
                     const totalVotes = chartDataValues.reduce((a, b) => a + b, 0);
                     const chartPercentages = chartDataValues.map(votes => (votes / totalVotes) * 100);
 
+                    console.log('Total Votes:', totalVotes);
+                    console.log('Chart Data Values:', chartDataValues);
+                    console.log('Chart Percentages:', chartPercentages);
+
+
                     const chartData = {
                         labels: chartLabels,
                         datasets: [{
