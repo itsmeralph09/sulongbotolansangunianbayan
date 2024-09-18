@@ -81,8 +81,8 @@ checkSession();
     height: auto; /* Allow cards to adjust height based on content */
     background-color: #fff; /* Ensure background is white for printing */
     position: relative; /* Needed for absolute positioning of the image */
-    min-height: 250px;
-    max-height: 250px;
+    min-height: 300px;
+    max-height: 300px;
 }
 
 
