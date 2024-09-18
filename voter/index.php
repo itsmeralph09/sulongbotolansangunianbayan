@@ -6,9 +6,9 @@ checkSession();
 
 // Database connection details
 $host = 'localhost'; // Your database host
-$dbname = 'sb_db'; // Your database name
-$username = 'root'; // Your database username
-$password = ''; // Your database password
+$dbname = 'u293681336_szp'; // Your database name
+$username = 'u293681336_szp'; // Your database username
+$password = 'Moondrop#123'; // Your database password
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
