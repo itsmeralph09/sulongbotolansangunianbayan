@@ -144,6 +144,8 @@
     <?php include './include/script.php'; ?>
 
     <script>
+        let chartInstance; // Variable to hold the chart instance
+
         function updateResults() {
             fetch('./action/fetch_result.php')
                 .then(response => {
@@ -176,31 +178,29 @@
                         .sort((a, b) => b.votes - a.votes || a.rank - b.rank);
 
                     // Update cards
-const resultsContainer = document.getElementById('results-container');
-resultsContainer.innerHTML = '';
-sortedCardVotes.forEach((card, index) => {
-    const cardElement = document.createElement('div');
-    cardElement.className = 'col-md-3'; // 4 columns in a row (Bootstrap 4)
+                    const resultsContainer = document.getElementById('results-container');
+                    resultsContainer.innerHTML = '';
+                    sortedCardVotes.forEach((card, index) => {
+                        const cardElement = document.createElement('div');
+                        cardElement.className = 'col-md-3'; // 4 columns in a row (Bootstrap 4)
 
-    cardElement.innerHTML = `
-        <div class="result-card ${index < 2 ? 'highlight' : 'non-top'}">
-            <img src="${card.image}" class="card-img-top" alt="${card.name}">
-            <div class="card-body">
-                <h5 class="card-title">${card.name}</h5>
-                <p class="card-text">${card.votes} votes</p>
-                <p class="card-rank">Rank ${card.rank}</p>
-            </div>
-        </div>
-    `;
-    resultsContainer.appendChild(cardElement);
-});
+                        cardElement.innerHTML = `
+                            <div class="result-card ${index < 2 ? 'highlight' : 'non-top'}">
+                                <img src="${card.image}" class="card-img-top" alt="${card.name}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${card.name}</h5>
+                                    <p class="card-text">${card.votes} votes</p>
+                                    <p class="card-rank">Rank ${card.rank}</p>
+                                </div>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(cardElement);
+                    });
 
-// Optional: Ensure the container has a row class if using Bootstrap
-if (!resultsContainer.classList.contains('row')) {
-    resultsContainer.classList.add('row');
-}
-
-
+                    // Optional: Ensure the container has a row class if using Bootstrap
+                    if (!resultsContainer.classList.contains('row')) {
+                        resultsContainer.classList.add('row');
+                    }
 
                     // Update chart
                     const ctx = document.getElementById('results-chart').getContext('2d');
@@ -271,8 +271,13 @@ if (!resultsContainer.classList.contains('row')) {
                         }
                     };
 
+                    // Destroy existing chart before creating a new one
+                    if (chartInstance) {
+                        chartInstance.destroy();
+                    }
+
                     Chart.register(ChartDataLabels);
-                    new Chart(ctx, chartConfig);
+                    chartInstance = new Chart(ctx, chartConfig);
                 })
                 .catch(error => console.error('Error fetching results:', error));
         }
@@ -281,6 +286,7 @@ if (!resultsContainer.classList.contains('row')) {
         updateResults();
         setInterval(updateResults, 5000); // Update every 5 seconds
     </script>
+
 
 </body>
 
