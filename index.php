@@ -23,7 +23,7 @@
   
   .logo {
     width: 80px; 
-    height: 80px; 
+    height: 40px; 
     border-radius: 50%; 
     box-shadow: 0px 0px 20px 2px rgba(255, 255, 255, 0.3); 
     animation: expand 2s ease forwards;
@@ -56,7 +56,7 @@
   <script>
     setTimeout(function(){
       window.location.href = 'login.php'; 
-    }, 3000);
+    }, 2500);
   </script>
 </body>
 </html>
