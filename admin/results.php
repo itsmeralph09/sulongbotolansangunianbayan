@@ -249,7 +249,7 @@
                                 tooltip: {
                                     callbacks: {
                                         label: function(tooltipItem) {
-                                            const percentage = chartPercentages[tooltipItem.dataIndex].toFixed(2);
+                                            const percentage = chartPercentages[tooltipItem.dataIndex].toFixed(4);
                                             return `${tooltipItem.label}: ${tooltipItem.raw} votes (${percentage}%)`;
                                         }
                                     }
@@ -258,7 +258,7 @@
                                     display: true,
                                     color: 'black',
                                     formatter: (value, ctx) => {
-                                        const percentage = chartPercentages[ctx.dataIndex].toFixed(2);
+                                        const percentage = chartPercentages[ctx.dataIndex].toFixed(4);
                                         return `${value}\n(${percentage}%)`;
                                     },
                                     anchor: 'end',
