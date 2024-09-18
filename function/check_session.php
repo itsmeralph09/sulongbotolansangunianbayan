@@ -20,8 +20,8 @@ function redirectToDashboard() {
     if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         switch ($_SESSION['role']) {
             case "1":
-                // Redirect to superadmin dashboard
-                header("Location: ./superadmin/index.php");
+                // Redirect to comelec dashboard
+                header("Location: ./comelec/index.php");
                 exit;
             case "2":
                 // Redirect to admin dashboard

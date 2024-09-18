@@ -130,7 +130,7 @@
                               // Redirect based on session role
                               const role = parseInt(response.role);
                               if (role === 1) {
-                                    window.location.href = './superadmin/index.php'; // Redirect to supervisor dashboard
+                                    window.location.href = './comelec/index.php'; // Redirect to comelec dashboard
                                 } else if (role === 2) {
                                     window.location.href = './admin/index.php'; // Redirect to staff dashboard
                                 }else if (role === 3) {

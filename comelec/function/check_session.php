@@ -9,10 +9,10 @@ function checkSession() {
     // Check the role and redirect accordingly
     if ($_SESSION['role'] == "1") {
         // Redirect to comelec dashboard
-        redirectTo("../comelec/index.php");
+        // redirectTo("../comelec/index.php");
     } elseif ($_SESSION['role'] == "2") {
         // Redirect to admin dashboard
-        // redirectTo("../admin/index.php"); 
+        redirectTo("../admin/index.php"); 
     } elseif ($_SESSION['role'] == "3") {
         // Redirect to voter dashbard
         redirectTo("../voter/index.php"); 
