@@ -136,7 +136,7 @@
                                 }else if (role === 3) {
                                     window.location.href = './voter/index.php'; // Redirect to voter dashboard
                                 } else {
-                                    showWarningMessage('Invalid user role.'); // Show error for unknown role
+                                    showWarningMessage2('Invalid user role.'); // Show error for unknown role
                                 }
                           } else {
                               // If AJAX request is successful but response indicates error, show SweetAlert error message
